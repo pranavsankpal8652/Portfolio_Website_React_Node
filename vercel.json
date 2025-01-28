@@ -1,0 +1,24 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "Mail-Server/app/controllers/*.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "client/package.json",
+        "use": "@vercel/static-build"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/controllers/(.*)",
+        "dest": "/Mail-Server/app/controllers/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/client/$1"
+      }
+    ]
+  }
+  
