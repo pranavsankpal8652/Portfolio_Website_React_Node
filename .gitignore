@@ -1,0 +1,29 @@
+# Node modules
+client/node_modules/
+Mail-Server/node_modules/
+
+# Build output
+client/dist/
+client/build/
+Mail-Server/dist/
+Mail-Server/build/
+
+# Environment variables
+client/.env
+Mail-Server/.env
+
+# Logs
+client/logs/
+client/*.log
+Mail-Server/logs/
+Mail-Server/*.log
+
+# System files
+client/.DS_Store
+client/Thumbs.db
+Mail-Server/.DS_Store
+Mail-Server/Thumbs.db
+
+# Temporary files
+client/*.tmp
+Mail-Server/*.tmp
