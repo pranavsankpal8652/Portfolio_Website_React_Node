@@ -1,4 +1,6 @@
-require('dotenv').config()
+const { transporter } = require('../config/NodeMailer')
+
+
 
 const mailController=async (req, res) => {
     const userEnquiry = req.body

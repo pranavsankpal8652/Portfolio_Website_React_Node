@@ -1,10 +1,11 @@
 const express = require('express')
 const cors = require('cors')
 const { transporter } = require('./app/config/NodeMailer')
-const { mailController } = require('./app/config/controllers/MailController')
+const { mailController } = require('./app/controllers/MailController')
 const app = express()
-app.use(express.json())
 app.use(cors())
+app.use(express.json())
+require('dotenv').config()
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
