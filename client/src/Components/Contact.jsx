@@ -2,23 +2,26 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import SweetAlert2 from 'react-sweetalert2';
+import { Spinner } from "flowbite-react";
 
 export default function Contact() {
   const [swalProps, setSwalProps] = useState({});
+  const [loader, setLoader] = useState(false)
 
   const sendEnquiry = (e) => {
-
+    setLoader(true)
     e.preventDefault()
-   const formData={
-      email:e.target.email.value,
-      subject:e.target.subject.value,
-      message:e.target.message.value
+    const formData = {
+      email: e.target.email.value,
+      subject: e.target.subject.value,
+      message: e.target.message.value
     }
-    
+
     axios.post('http://localhost:8080/submitEnquiry', formData)
       .then(res => {
         // console.log(res)
         // alert()
+        setLoader(false)
         setSwalProps({
           show: true,
           title: res.data.msg,
@@ -61,8 +64,16 @@ export default function Contact() {
               <textarea id="message" name="message" placeholder="Your message..." rows={10} className='w-full md:min-h-[140px] min-h-[110px] text-black' required />
             </div>
             <div className="mb-6">
-              <button type="submit" className="w-full bg-gradient-to-r from-orange-400 via-orange-100 to-orange-300 text-black p-[10px_20px]">
-                Send Message
+              <button disabled={loader}  type="submit" className={`w-full bg-gradient-to-r from-orange-400 via-orange-100 to-orange-300 text-black p-[10px_20px] ${loader?'cursor-wait':''}`}>
+                {
+                  loader ?
+                    <div className="text-center">
+                      Sending...
+                      <Spinner  aria-label="Center-aligned spinner example" />
+                    </div>
+                    :
+                    'Send Message'
+                }
               </button>
             </div>
           </form>
