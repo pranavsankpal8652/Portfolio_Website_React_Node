@@ -9,7 +9,7 @@ import Contact from './Contact'
 export default function Home() {
     return (
         <>
-            <div className='container bg-black'>
+            <div className='max-w-[100%] bg-black'>
                 <Header />
                 <Banner/>
                 <About/>
